@@ -37,6 +37,12 @@ services:
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "8080:15672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/mnesia/
 
 ###> doctrine/doctrine-bundle ###
   database:
@@ -60,4 +66,5 @@ volumes:
 
 ###> doctrine/doctrine-bundle ###
   database_data:
+  rabbitmq:
 ###< doctrine/doctrine-bundle ###
